@@ -1,0 +1,351 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+//admin set up
+        String Password = "admin123";
+        System.out.println("Welcome! Please log in as: ");
+        System.out.println("1. Shopper");
+        System.out.println("2. Admin");
+        int login = scanner.nextInt();
+
+        //assign variable for cart
+        int cart = 0;
+
+        //Prices and stock of phones, food and soccer
+        int priceIphone16 = 1200;
+        int priceIphone15 = 1000;
+        int priceIphone15Pro = 1150;
+        int stockIphone16 = 5;
+        int stockIphone15 = 8;
+        int stockIphone15Pro = 7;
+
+        int priceSandwich = 12;
+        int pricePizza = 9;
+        int priceBurger = 11;
+        int stockSandwich = 8;
+        int stockPizza = 20;
+        int stockBurger = 15;
+
+        int priceSoccerBall = 35;
+        int priceCleats = 300;
+        int priceJersey = 250;
+        int stockSoccerball = 40;
+        int stockCleats = 25;
+        int stockJersey = 30;
+
+        if (login == 1) {
+
+            //Welcome message
+            System.out.println("Welcome to the online store!");
+            System.out.println("What categories are you interested in?");
+            System.out.println("1. Phones, 2. Food, 3. Soccer");
+            System.out.println("Enter your choice: 1, 2 or 3: ");
+            int choice = scanner.nextInt();
+
+            //switch case to make the shop
+
+            switch (choice) {
+                case 1: //phones
+                    System.out.println("You have selected phones.");
+                    System.out.println("1. iphone16: " + priceIphone16 + "  Stock: " + stockIphone16);
+                    System.out.println("2. iphone15: " + priceIphone15 + "  Stock: " + stockIphone15);
+                    System.out.println("3. iphone15Pro: " + priceIphone15Pro + "  Stock: " + stockIphone15Pro);
+
+                    System.out.println("Enter your choice: 1, 2 or 3: ");
+                    int phoneChoice = scanner.nextInt();
+                    int phoneQuantity = 0;
+
+                    if (phoneChoice == 1 && stockIphone16 > 0) {
+                        System.out.println("Enter the quantity (max:" + stockIphone16 + ").");
+                        phoneQuantity = scanner.nextInt();
+                        if (phoneQuantity <= stockIphone16) {
+                            stockIphone16 -= phoneQuantity;
+                            cart += priceIphone16 * phoneQuantity;
+                            System.out.println("You have added " + phoneQuantity + " iphone 16(s) to your cart");
+                        } else {
+                            System.out.println("Not enough stock");
+                        }
+                    } else if (phoneChoice == 2 && stockIphone15 > 0) {
+                        System.out.println("Enter the quantity (max:" + stockIphone15 + ").");
+                        phoneQuantity = scanner.nextInt();
+                        if (phoneQuantity <= stockIphone15) {
+                            stockIphone15 -= phoneQuantity;
+                            cart += priceIphone15 * phoneQuantity;
+                            System.out.println("You have added " + phoneQuantity + " iphone15(s) to your cart");
+                        } else {
+                            System.out.println("Not enough stock");
+                        }
+                    } else if (phoneChoice == 3 && stockIphone15Pro > 0) {
+                        System.out.println("Enter the quantity (max:" + stockIphone15Pro + ").");
+                        phoneQuantity = scanner.nextInt();
+                        if (phoneQuantity <= stockIphone15Pro) {
+                            stockIphone15Pro -= phoneQuantity;
+                            cart += priceIphone15Pro * phoneQuantity;
+                            System.out.println("You have added " + phoneQuantity + " iphone15pro(s) to your cart");
+                        } else {
+                            System.out.println("Not enough stock");
+                        }
+                    } else {
+                        System.out.println("Out of stock or invalid choice.");
+                    }
+                    break;
+
+                case 2: //food
+                    System.out.println("You have selected food.");
+                    System.out.println("1. Sandwich: " + priceSandwich + "  Stock: " + stockSandwich);
+                    System.out.println("2. Pizza: " + pricePizza + "  Stock: " + stockPizza);
+                    System.out.println("3. Burger: " + priceBurger + "  Stock: " + stockBurger);
+                    System.out.println("Enter your choice: 1, 2 or 3: ");
+                    int foodChoice = scanner.nextInt();
+                    int foodQuantity = 0;
+
+                    if (foodChoice == 1 && stockSandwich > 0) {
+                        System.out.println("Enter the quantity (max:" + stockSandwich + ").");
+                        foodQuantity = scanner.nextInt();
+                        if (foodQuantity <= stockSandwich) {
+                            stockSandwich -= foodQuantity;
+                            cart += priceSandwich * foodQuantity;
+                            System.out.println("You have added " + foodQuantity + " Sandwich to your cart");
+                        } else {
+                            System.out.println("Not enough stock");
+                        }
+                    } else if (foodChoice == 2 && stockPizza > 0) {
+                        System.out.println("Enter the quantity (max:" + stockPizza + ").");
+                        foodQuantity = scanner.nextInt();
+                        if (foodQuantity <= stockPizza) {
+                            stockPizza -= foodQuantity;
+                            cart += pricePizza * foodQuantity;
+                            System.out.println("You have added " + foodQuantity + " Pizza to your cart");
+                        } else {
+                            System.out.println("Not enough stock");
+                        }
+                    } else if (foodChoice == 3 && stockBurger > 0) {
+                        System.out.println("Enter the quantity (max:" + stockBurger + ").");
+                        foodQuantity = scanner.nextInt();
+                        if (foodQuantity <= stockBurger) {
+                            stockBurger -= foodQuantity;
+                            cart += priceBurger * foodQuantity;
+                            System.out.println("You have added " + foodQuantity + " Burger to your cart");
+                        } else {
+                            System.out.println("Not enough stock");
+                        }
+                    } else {
+                        System.out.println("Out of stock or invalid choice.");
+                    }
+                    break;
+
+                case 3: //soccer
+                    System.out.println("You have selected soccer.");
+                    System.out.println("1. Soccer ball: " + priceSoccerBall + "  Stock: " + stockSoccerball);
+                    System.out.println("2. Cleats: " + priceCleats + "  Stock: " + stockCleats);
+                    System.out.println("3. Jersey: " + priceJersey + "  Stock: " + stockJersey);
+                    System.out.println("Enter your choice: 1, 2 or 3: ");
+                    int soccerChoice = scanner.nextInt();
+                    int soccerQuantity = 0;
+
+                    if (soccerChoice == 1 && stockSoccerball > 0) {
+                        System.out.println("Enter the quantity (max:" + stockSoccerball + ").");
+                        soccerQuantity = scanner.nextInt();
+                        if (soccerQuantity <= stockSoccerball) {
+                            stockSoccerball -= soccerQuantity;
+                            cart += priceSoccerBall * soccerQuantity;
+                            System.out.println("You have added " + soccerQuantity + " Soccer ball(s) to your cart");
+                        } else {
+                            System.out.println("Not enough stock");
+                        }
+                    } else if (soccerChoice == 2 && stockCleats > 0) {
+                        System.out.println("Enter the quantity (max:" + stockCleats + ").");
+                        soccerQuantity = scanner.nextInt();
+                        if (soccerQuantity <= stockCleats) {
+                            stockCleats -= soccerQuantity;
+                            cart += priceCleats * soccerQuantity;
+                            System.out.println("You have added " + soccerQuantity + " Cleats to your cart");
+                        } else {
+                            System.out.println("Not enough stock");
+                        }
+                    } else if (soccerChoice == 3 && stockJersey > 0) {
+                        System.out.println("Enter the quantity (max:" + stockJersey + ").");
+                        soccerQuantity = scanner.nextInt();
+                        if (soccerQuantity <= stockJersey) {
+                            stockJersey -= soccerQuantity;
+                            cart += priceJersey * soccerQuantity;
+                            System.out.println(" You have added " + soccerQuantity + " Jersey(s) to your cart");
+                        } else {
+                            System.out.println("Not enough stock");
+                        }
+                    } else {
+                        System.out.println("Out of stock or invalid choice.");
+                    }
+                    break;
+
+                default:
+                    System.out.println("Invalid choice.");
+            }
+
+            //check out and confirmation of the order
+            System.out.println("Check Out:");
+            System.out.println("Total cart cost: $" + cart);
+            System.out.println("Would you like to confirm your order?");
+            String confirm = scanner.next();
+            if (confirm.equalsIgnoreCase("yes")) {
+                System.out.println("Your order has been confirmed. Thank you for your purchase.!");
+            } else {
+                System.out.println("Your order has been cancelled. Thank you for visiting");
+            }
+            //admin commands
+
+        } else if (login == 2) {
+            System.out.println("Enter the admin password: ");
+            String password = scanner.next();
+            if (password.equals(password)) {
+                System.out.println("You have successfully logged in as Admin!");
+                int adminChoice;
+                System.out.println("Admin Menu:");
+                System.out.println("1. View stock");
+                System.out.println("2. Add or update stock");
+                System.out.println("3. Change prices");
+                System.out.println("4. Exit");
+                adminChoice = scanner.nextInt();
+
+                //admin choices
+
+                switch (adminChoice) {
+                    case 1:
+                        System.out.println("Current Stock: ");
+                        System.out.println("Phones");
+                        System.out.println(" iphone16: " + stockIphone16);
+                        System.out.println(" iphone15: " + stockIphone15);
+                        System.out.println(" iphone15pro: " + stockIphone15Pro);
+                        System.out.println("Food");
+                        System.out.println(" Sandwich: " + stockSandwich);
+                        System.out.println(" Pizza: " + stockPizza);
+                        System.out.println(" Burger: " + stockBurger);
+                        System.out.println(" Soccer ");
+                        System.out.println(" Soccerball: " + stockSoccerball);
+                        System.out.println(" Cleats: " + stockCleats);
+                        System.out.println(" Jersey: " + stockJersey);
+                        break;
+
+                        //update stock
+                    case 2:
+                        System.out.println("Select a what stock to update: ");
+                        System.out.println("1.Phones");
+                        System.out.println("2. Food");
+                        System.out.println("3. Soccer");
+                        int stockchange = scanner.nextInt();
+                        System.out.println("Enter the item number and new stock: ");
+                        if (stockchange == 1) {
+                            System.out.println("1. Phones16");
+                            System.out.println("2. Phones15");
+                            System.out.println("3. Phones15pro");
+                            int phonechoice = scanner.nextInt();
+                            int newStock = scanner.nextInt();
+                            if (phonechoice == 1) {
+                                stockIphone16 = newStock;
+                            } else if (phonechoice == 2) {
+                                stockIphone15 = newStock;
+                            } else if (phonechoice == 3) {
+                                stockIphone15Pro = newStock;
+                            } else if (stockchange == 2) {
+                                System.out.println("1. Sandwich");
+                                System.out.println("2. Pizza");
+                                System.out.println("3. Burger");
+                                int fooditem = scanner.nextInt();
+                                int newstock = scanner.nextInt();
+                                if (fooditem == 1) {
+                                    stockSandwich = newstock;
+                                } else if (fooditem == 2) {
+                                    stockPizza = newstock;
+                                } else if (fooditem == 3) {
+                                    stockBurger = newstock;
+                                } else if (stockchange == 3) {
+                                    System.out.println("1. Soccer ball");
+                                    System.out.println("2. Cleats");
+                                    System.out.println("3. Jersey");
+                                    int socceritem = scanner.nextInt();
+                                    int newstock1 = scanner.nextInt();
+                                    if (socceritem == 1) {
+                                        stockSoccerball = newstock1;
+                                    } else if (socceritem == 2) {
+                                        stockCleats = newstock1;
+                                    } else if (socceritem == 3) {
+                                        stockJersey = newstock1;
+                                    }
+                                    System.out.println("Your stock has been updated");
+                                    break;
+                                    // update prices
+                                }
+                            }
+                        }
+                                    case 3:
+                                    System.out.println("Select item to update price: ");
+                                    System.out.println("1. Phones");
+                                    System.out.println("2. Food");
+                                    System.out.println("3. Soccer");
+                                    int priceitem = scanner.nextInt();
+                                    System.out.println("Enter the item number and newprice: ");
+                                    if (priceitem == 1) {
+                                        System.out.println("1. Phones16");
+                                        System.out.println("2. Phones15");
+                                        System.out.println("3. Phones15pro");
+                                        int phonechoice1 = scanner.nextInt();
+                                        int newprice = scanner.nextInt();
+                                        if (phonechoice1 == 1) {
+                                            stockIphone16 = newprice;
+                                        } else if (phonechoice1 == 2) {
+                                            stockIphone15 = newprice;
+                                        } else if (phonechoice1 == 3) {
+                                            stockIphone15Pro = newprice;
+                                        } else if (priceitem == 2) {
+                                            System.out.println("1. Sandwich");
+                                            System.out.println("2. Pizza");
+                                            System.out.println("3. Burger");
+                                            int fooditem = scanner.nextInt();
+                                            int newprice1 = scanner.nextInt();
+                                            if (fooditem == 1) {
+                                                priceSandwich = newprice1;
+                                            } else if (fooditem == 2) {
+                                                pricePizza = newprice1;
+                                            } else if (fooditem == 3) {
+                                                priceBurger = newprice1;
+                                            } else if (priceitem == 3) {
+                                                System.out.println("1. Soccer ball");
+                                                System.out.println("2. Cleats");
+                                                System.out.println("3. Jersey");
+                                                int socceritem1 = scanner.nextInt();
+                                                int newprice2 = scanner.nextInt();
+                                                if (socceritem1 == 1) {
+                                                    priceSoccerBall = newprice2;
+                                                } else if (socceritem1 == 2) {
+                                                    priceCleats = newprice2;
+                                                } else if (socceritem1 == 3) {
+                                                    priceJersey = newprice2;
+                                                }
+                                                System.out.println("Your stock has been updated");
+                                                break;
+
+                                                //exit the admin commands
+                                            }
+                                        }
+                                    }
+                                                    case 4:
+                                                    System.out.println("Leaving admin panel. You have logged out. Restart the program!");
+                                                    break;
+
+                    default:
+                                                    System.out.println("Invalid choice.");
+                                            }
+                                            while (adminChoice !=4);
+                                        } else {
+                                            System.out.println("Incorrect password. Access denied.");
+                                        }
+                                    } else {
+                                        System.out.println("Invalid choice.");
+                                    }
+                                    scanner.close();
+                            }
+                        }
+
+
